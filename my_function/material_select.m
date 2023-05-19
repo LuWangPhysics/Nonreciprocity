@@ -52,25 +52,13 @@ euler_zpp=[cos(phi_3),sin(phi_3),0;...
 euler_R=euler_zpp*euler_xp*euler_z;
 
 switch slab_ID
-
     case 1
-       %Enhanced nonreciprocal radiation in Weyl semimetals by attenuated total reflection
-       % doi: 10.1063/5.0055418 data for WSM
+
        dia=9+0.3*1i;
        off_dia=12*1i;
-
-%--------------------------------------
-       %voigt
-% %--------------------------------------
-        meps=C.eps0.*[dia,0,off_dia;...
+       meps=C.eps0.*[dia,0,off_dia;...
                     0,  dia,  0; ...
                   -off_dia,0, dia];  
-%--------------------------------------
-       %Faraday
- %--------------------------------------
-%         meps=C.eps0.*[dia,off_dia,0;...
-%                       -off_dia,  dia,  0; ...
-%                     0,0, dia];  
 
     
         meps=euler_R*meps/(euler_R);
@@ -82,9 +70,10 @@ switch slab_ID
             0,0,n_die].^2;
 
         meps=euler_R*meps/(euler_R);
+
 % if there is a third layer add 
-  %case 3
-  %....
+%case 3
+%....
 
     otherwise
         fprintf("no material defined. make sure layer agrees with material number")

@@ -34,7 +34,7 @@ D=D.variable(1,1,theta_arr);
 %define thickness of each material d_arr=[material 1, material 2.....]
 %change these 3 parameters consistently
 %---------------------------------------------------------
-d_arr=([1e-6,3.2e-6]);
+d_arr=[1e-6,3.2e-6];
 N_of_slab=length(d_arr);
 C.number_of_interface=1+N_of_slab;
 %---------------------------------------------------------
