@@ -1,4 +1,4 @@
-function C=cons(lambda_0)
+function C=cons(lambda_0, geometry_config)
 C=struct;
 C.lambda0=lambda_0;
 C.k0=2*pi/C.lambda0;
@@ -10,6 +10,15 @@ C.c=3e8;
 C.mu0= 1.25663706212e-6;
 C.eps0=8.8541878128e-12; 
 C.c=1/sqrt(C.mu0*C.eps0);
-C.n_die=1.5;
+
 C.w0=C.c*C.k0;
+C.geo=geometry_config;
+
+switch geometry_config
+    case "R"
+        C.Rotation_iter=2;
+    case "T"
+        C.Rotation_iter=4;
+end
+
 end

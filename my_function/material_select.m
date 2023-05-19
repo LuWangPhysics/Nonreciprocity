@@ -76,9 +76,10 @@ switch slab_ID
         meps=euler_R*meps/(euler_R);
 
      case 2
-        meps=C.eps0.*[C.n_die,0,0;...
-             0,C.n_die,0;...
-            0,0,C.n_die].^2;
+         n_die=1.5;
+        meps=C.eps0.*[n_die,0,0;...
+             0,n_die,0;...
+            0,0,n_die].^2;
 
         meps=euler_R*meps/(euler_R);
 % if there is a third layer add 

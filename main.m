@@ -4,19 +4,22 @@ addpath('my_function');
 addpath('my_plot_scheme');
 
 P=my_plot;
-Rot=Rot_two_medium;
-%choose reflection or transmission geometry "R" or "T"
-Rot=Rot.init("R");
+lambda0=10e-6;
 %---------------------------------------------------------
-%scan parameters
+%choose reflection or transmission geometry "R" or "T"
+%---------------------------------------------------------
+geometry_config="R";
+C=cons(lambda0,geometry_config);  
+Rot=Rot_two_medium;
+Rot=Rot.init(geometry_config);
+%---------------------------------------------------------
+%define incidence angle array
 %--------------------------------------------------------
 theta_margin=0.1*pi/180;
 theta_arr=linspace(0+theta_margin,pi/2-theta_margin,82);
-lambda0=10e-6;
-C=cons(lambda0);          
-
+        
 %---------------------------------------------------------
-%data store remeber to change according to angle array
+%data store 
 %---------------------------------------------------------
 delta_ignore=1e-6;
 D=Data_storage;
@@ -43,7 +46,7 @@ if ~exist(filename, 'dir')
 end
 
     
-        for rotate_n=1:1:4
+        for rotate_n=1:1:C.Rotation_iter
                 %for incidenting from below, the thickness follow reverse
                 %order 
                 if rotate_n>2
